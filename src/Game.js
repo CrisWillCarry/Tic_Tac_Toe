@@ -57,15 +57,29 @@ const Game = () => {
         return null;
     };
     
-    return(
-        <div className="h-screen flex flex-col justify-center items-center">
-            <h1 className="text-7xl text-white font-bold"> |O| TIC TAC TOE |X|</h1>
-            <Board board={board} checkWinner={checkWinner} finished={finished}/>
-            <h1 className="text-4xl text-white font-bold mt-16"> {text} </h1>
-            {finished && <button className="text-xl text-white font-bold p-2  mt-5 border-b-2 hover:bg-white hover:text-blue-950" onClick={() => restart()}>Play Again</button>}
-            {finished && winner && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+    return (
+        <div className="h-screen flex flex-col justify-center items-center p-4 md:p-8">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl text-white font-bold text-center">
+                |O| TIC TAC TOE |X|
+            </h1>
+            <Board board={board} checkWinner={checkWinner} finished={finished} />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl text-white font-bold mt-8 text-center">
+                {text}
+            </h1>
+            {finished && (
+                <button
+                    className="text-lg sm:text-xl text-white font-bold p-3 mt-5 border-b-2 hover:bg-white hover:text-blue-950 transition-all duration-300"
+                    onClick={() => restart()}
+                >
+                    Play Again
+                </button>
+            )}
+            {finished && winner && (
+                <Confetti width={window.innerWidth} height={window.innerHeight} />
+            )}
         </div>
     );
+    
 };
 
 export default Game;
