@@ -88,7 +88,9 @@ const GameAI = () => {
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
                 current === "O" ? setText("CPU Wins!"): setText("You Win!");
                 setFinished(true);
-                current === "O" ? setWinner(true): null;
+                if (current === "O") {
+                    setWinner(true);
+                }
                 return board[a];
             }
         }
