@@ -55,7 +55,7 @@ const GameAI = () => {
 
     const checkWinner = (index) => {
         if(board[index] !== null) return null;
-
+        setUserTurn(!userTurn);
         if(current === "X"){
             let newBoard = board;
             newBoard[index] = "X";
