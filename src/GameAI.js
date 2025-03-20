@@ -40,7 +40,7 @@ const GameAI = () => {
 
     const restart = () => {
         setBoard(Array(9).fill(null));
-        setText("X' Turn");
+        setText("Your Turn");
         setCurrent("X");
         setFinished(false);
     }
@@ -53,13 +53,13 @@ const GameAI = () => {
             newBoard[index] = "X";
             setBoard(newBoard);
             setCurrent("O");
-            setText("O' Turn");
+            setText("CPU's Turn");
         }else{
             let newBoard = board;
             newBoard[index] = "O";
             setBoard(newBoard);
             setCurrent("X");
-            setText("X' Turn");
+            setText("Your Turn");
         }
 
         if(board.includes(null) === false) {
@@ -77,9 +77,9 @@ const GameAI = () => {
         for (let i = 0; i < winCombinations.length; i++) {
             const [a, b, c] = winCombinations[i];
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                setText(`${board[a]} Wins!`);
+                current === "O" ? setText("CPU Wins!"): setText("You Win!");
                 setFinished(true);
-                setWinner(true);
+                current === "X" && setWinner(true);
                 return board[a];
             }
         }
