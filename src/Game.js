@@ -62,7 +62,7 @@ const Game = () => {
             <h1 className="text-2xl sm:text-6xl md:text-7xl text-white font-bold text-center">
                 |O| TIC TAC TOE |X|
             </h1>
-            <Board board={board} checkWinner={checkWinner} finished={finished} />
+            <Board board={board} checkWinner={checkWinner} finished={finished} userTurn={true}/>
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-white font-bold mt-8 text-center">
                 {text}
             </h1>
