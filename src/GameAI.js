@@ -100,7 +100,7 @@ const GameAI = () => {
 
     return (
         <div className="h-screen flex flex-col justify-center items-center p-4 md:p-8">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl text-white font-bold text-center">
+            <h1 className="text-2xl sm:text-6xl md:text-7xl text-white font-bold text-center">
                 |O| TIC TAC TOE |X| AI
             </h1>
             <Board board={board} checkWinner={checkWinner} finished={finished} userTurn={userTurn} />

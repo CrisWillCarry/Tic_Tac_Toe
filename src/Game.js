@@ -23,13 +23,13 @@ const Game = () => {
             newBoard[index] = "X";
             setBoard(newBoard);
             setCurrent("O");
-            setText("O' Turn");
+            setText("O's Turn");
         }else{
             let newBoard = board;
             newBoard[index] = "O";
             setBoard(newBoard);
             setCurrent("X");
-            setText("X' Turn");
+            setText("X's Turn");
         }
 
         if(board.includes(null) === false) {
@@ -59,7 +59,7 @@ const Game = () => {
     
     return (
         <div className="h-screen flex flex-col justify-center items-center p-4 md:p-8">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl text-white font-bold text-center">
+            <h1 className="text-2xl sm:text-6xl md:text-7xl text-white font-bold text-center">
                 |O| TIC TAC TOE |X|
             </h1>
             <Board board={board} checkWinner={checkWinner} finished={finished} />
