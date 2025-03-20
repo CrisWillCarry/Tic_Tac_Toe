@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Board from "./Board";
 import Confetti from "react-confetti";
-import axios from 'axios';
-
 const GameAI = () => {
     const [board,setBoard] =useState(Array(9).fill(null));
     const [text, setText] = useState("Your Turn");
