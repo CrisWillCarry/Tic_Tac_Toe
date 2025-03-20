@@ -1,5 +1,3 @@
-// api/gemini.js
-
 import axios from 'axios';
 
 export default async function handler(req, res) {
@@ -8,22 +6,24 @@ export default async function handler(req, res) {
       const { contents } = req.body;
 
       const response = await axios.post(
-        'https://api.genai.google.com/v1/models/generate_content',  // Gemini API URL
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,  // Correct URL with query parameter for API key
         {
-          model: 'gemini-2.0-flash',
-          contents: contents,
+          contents: [{
+            parts: [{ text: contents }]
+          }]
         },
         {
           headers: {
-            'Authorization': `Bearer ${process.env.GEMINI_API_KEY}`,  // Use an environment variable for the API Key
             'Content-Type': 'application/json',
           },
         }
       );
 
+      console.log("Gemini API response:", response.data);
       res.status(200).json(response.data);
     } catch (error) {
-      res.status(500).json({ error: 'Error interacting with Gemini API' });
+      console.error("Gemini API error:", error);
+      res.status(500).json({ error: 'Error interacting with Gemini API', details: error.message });
     }
   } else {
     res.status(405).json({ error: 'Method Not Allowed' });
