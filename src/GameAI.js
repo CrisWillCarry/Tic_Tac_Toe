@@ -36,6 +36,7 @@ const GameAI = () => {
             console.error('Error getting response from Gemini API:', error);
             return null;
           }
+          //
     };
 
     const restart = () => {
