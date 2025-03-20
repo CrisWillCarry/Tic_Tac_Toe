@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Menu from './Menu';
+import Game from './Game';
+import GameAI from './GameAI';
 
 function App() {
+  const [start, setStart] = useState(false);
+
+  const play = (type) => {
+    if(type === "AI") {
+      setStart("AI");
+      return;
+    }
+    setStart(true);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='bg-blue-950'>
+      {start === "AI" ? <GameAI/> : start ? <Game/>: <Menu play={play}/>}
     </div>
   );
 }
