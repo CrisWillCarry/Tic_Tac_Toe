@@ -5,6 +5,8 @@ export default async function handler(req, res) {
     try {
       const { contents } = req.body;
 
+      console.log("Request to Gemini API:", req);
+      
       const response = await axios.post(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,  // Correct URL with query parameter for API key
         {
