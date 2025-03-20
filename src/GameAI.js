@@ -37,7 +37,7 @@ const GameAI = () => {
           const data = await response.json();
           console.log("Response from Gemini API:", data);
       
-          const move = parseInt(data.choices?.[0]?.message?.content?.trim());
+          const move = parseInt(data);
           console.log("AI chose:", move);
           return isNaN(move) ? null : move;
         } catch (error) {
