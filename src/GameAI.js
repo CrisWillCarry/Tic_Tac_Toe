@@ -7,7 +7,7 @@ const GameAI = () => {
     const [current, setCurrent] = useState("X");
     const [finished, setFinished] = useState(false);
     const [winner, setWinner] = useState(false);
-    
+    const[userTurn, setUserTurn] = useState(true);
 
     useEffect(() => {
         if (current === "O" && !finished) {
@@ -98,7 +98,7 @@ const GameAI = () => {
     return(
         <div className="h-screen flex flex-col justify-center items-center">
             <h1 className="text-7xl text-white font-bold"> |O| TIC TAC TOE |X| AI</h1>
-            <Board board={board} checkWinner={checkWinner} finished={finished}/>
+            <Board board={board} checkWinner={checkWinner} finished={finished} userTurn={userTurn}/>
             <h1 className="text-4xl text-white font-bold mt-16"> {text} </h1>
             {finished && <button className="text-xl text-white font-bold p-2  mt-5 border-b-2 hover:bg-white hover:text-blue-950" onClick={() => restart()}>Play Again</button>}
             {finished && winner && <Confetti width={window.innerWidth} height={window.innerHeight} />}
