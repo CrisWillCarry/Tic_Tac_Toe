@@ -28,7 +28,7 @@ const GameAI = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              contents: `You are an AI Tic Tac Toe player. Here is the current board: ${board.map(cell => cell || "-").join("")}. You are "O". Only return the index of the cell you want to place your move. Nothing else, just the index.`  // Example content
+              contents: `You are an AI Tic Tac Toe player who always makes the best moves and tries to win. Here is the current board: ${board.map(cell => cell || "-").join("")}. You are "O". Only return the index of the cell you want to place your move. Nothing else, just the index.`  // Example content
             }),
           });
       
@@ -88,7 +88,7 @@ const GameAI = () => {
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
                 current === "O" ? setText("CPU Wins!"): setText("You Win!");
                 setFinished(true);
-                current === "X" && setWinner(true);
+                current === "O" ? setWinner(true): null;
                 return board[a];
             }
         }
