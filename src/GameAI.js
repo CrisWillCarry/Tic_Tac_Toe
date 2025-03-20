@@ -23,22 +23,29 @@ const GameAI = () => {
 
 
     const getAIMove = async () => {
-
         try {
-            const response = await axios.post('/api/gemini', {
+          const response = await fetch('/api/gemini', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
               contents: `You are an AI Tic Tac Toe player. Here is the current board: ${board.map(cell => cell || "-").join("")}. You are "O". Only return the index of the cell you want to place your move. Nothing else, just the index.`  // Example content
-            });
-            console.log("Response from Gemini API:", response.data);
-            const move = parseInt(response.data.choices?.[0]?.message?.content?.trim());
-            console.log("AI chose:", move);
-            return isNaN(move) ? null : move;
-          } catch (error) {
-            console.error('Error getting response from Gemini API:', error);
-            return null;
-          }
-          //
-    };
-
+            }),
+          });
+      
+          const data = await response.json();
+          console.log("Response from Gemini API:", data);
+      
+          const move = parseInt(data.choices?.[0]?.message?.content?.trim());
+          console.log("AI chose:", move);
+          return isNaN(move) ? null : move;
+        } catch (error) {
+          console.error('Error getting response from Gemini API:', error);
+          return null;
+        }
+      };
+      
     const restart = () => {
         setBoard(Array(9).fill(null));
         setText("Your Turn");
