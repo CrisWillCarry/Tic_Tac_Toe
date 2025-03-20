@@ -4,13 +4,13 @@ import Confetti from "react-confetti";
 
 const Game = () => {
     const [board,setBoard] =useState(Array(9).fill(null));
-    const [text, setText] = useState("X' Turn");
+    const [text, setText] = useState("X's Turn");
     const [current, setCurrent] = useState("X");
     const [finished, setFinished] = useState(false);
     const [winner, setWinner] = useState(false);
     const restart = () => {
         setBoard(Array(9).fill(null));
-        setText("X' Turn");
+        setText("X's Turn");
         setCurrent("X");
         setFinished(false);
     }
