@@ -32,12 +32,6 @@ const Game = () => {
             setText("X's Turn");
         }
 
-        if(board.includes(null) === false) {
-            setText("It's a Draw!");
-            setFinished(true);
-            return "Draw";
-        }
-
         const winCombinations = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
             [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
@@ -52,6 +46,12 @@ const Game = () => {
                 setWinner(true);
                 return board[a];
             }
+        }
+
+        if(board.includes(null) === false) {
+            setText("It's a Draw!");
+            setFinished(true);
+            return "Draw";
         }
         
         return null;
